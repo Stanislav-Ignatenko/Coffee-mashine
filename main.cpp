@@ -13,28 +13,28 @@
 using namespace std;
 
 void printText(string massage);
-void printTextWithEndl(string massage);
 void printResult(string massage, double parametr);
-double money(double a);
+double value(double a);
 
 
 int main() {
     
-    int buyersBalance = 0;
+    //MENU//////////////////////////
+    int depositMoney = 0;
     
     printText("Plese, put in the money: ");
-    cin >> buyersBalance;
-    printResult("You have: ", money(buyersBalance));
-    printTextWithEndl("Please make a selection: ");
-    printTextWithEndl("1. Espresso 1.50 BYN");
-    printTextWithEndl("2. Cappuccino 2.20 BYN");
-    printTextWithEndl("3. Latte 2.80 BYN");
-    printTextWithEndl("4. Service");
+    cin >> depositMoney;
+    printResult(" 1.Deposit money: ", value (depositMoney));
+    printText("Please make a selection:\n");
+    printResult(" 2. Espresso (BYN) ",value(EXPRESSO));
+    printResult(" 3. Cappuccino (BYN) ", value(CAPPUCCINO));
+    printResult(" 4. Latte (BYN) ", value(LATTE));
+    printText(" 5. Service \n \n ");
     
     
     
     
-    buyersBalance = 0;
+    depositMoney = 0;
     
     return 0;
 }
@@ -43,15 +43,11 @@ void printText(string massage)
 {
     cout << massage;
 }
-void printTextWithEndl(string massage)
-{
-    cout << massage << endl;
-}
 void printResult(string massage, double parametr)
 {
     cout << massage << parametr << endl;
 }
-double money(double a)
+double value(double a)
 {
     return a;
 }
