@@ -26,7 +26,7 @@ int main() {
     cin >> buyersBalance;
     printResult("You have: ", money(buyersBalance));
     printTextWithEndl("Please make a selection: ");
-    printTextWithEndl("1. Espresso"+ EXPRESSO +" - BYN");
+    printTextWithEndl("1. Espresso 1.50 BYN");
     printTextWithEndl("2. Cappuccino 2.20 BYN");
     printTextWithEndl("3. Latte 2.80 BYN");
     printTextWithEndl("4. Service");
