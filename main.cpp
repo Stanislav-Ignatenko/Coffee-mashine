@@ -38,7 +38,7 @@ using namespace std;
 
 void printText(string massage);
 void printResult(string massage, double parametr);
-double value(double a);
+double value(double a);// название функции и параметра, которые сразу режут глаз и я не могу понять, что она делает (название функции обычно содержит глагол, например printText - прекрасное название)
 
 int main()
 {
@@ -58,6 +58,7 @@ int main()
         cin >> choice;
     
         //BUYERS MENY//////////////////////////
+        //Сразу возникает вопрос: а почему if() if()if()? Стоит переделать, т.к. если нет стаканчиков в автомате, то не имеет смысла больше проверять, внес ли пользователь достаточную сумму
         if (( choice == 1 or choice == 2 or choice == 3 or choice == 4) and CUPS == 0)
         {
             printText(" We are very sorry but there are no cups left \n\n");
@@ -87,6 +88,7 @@ int main()
         }
         while(true)
         {
+            //Мы в прицнипе используем уже бесконечный цикл для того, чтобы программа проолжала работать, этот цикл, как и следующий else if бессмыслен
             if (CUPS > 0 and (choice == 2 and depositMoney < EXPRESSO) or (choice == 3 and depositMoney < CAPPUCCINO) or (choice == 4 and depositMoney < LATTE))
             {
                 printText("Please deposit money. Pay attention that the coffee machine doesn’t give change\n");
@@ -98,6 +100,7 @@ int main()
                 printText("Please, put in the money: ");
                 cin >> depositMoney;
             }
+            
             else if (CUPS > 0 and (choice == 2 and depositMoney >= EXPRESSO) or (choice == 3 and depositMoney >= CAPPUCCINO) or (choice == 4 and depositMoney >= LATTE))
             {
                 break;
