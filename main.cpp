@@ -33,72 +33,40 @@
 # define CAPPUCCINO 2.20
 # define LATTE 2.80
 //BUYERS MENU////////////////////
-# define CUPS 2
+# define CUPS 500
 using namespace std;
+
+int cups = CUPS;
+int depositMoney;
+int choice;
 
 void printText(string massage);
 void printResult(string massage, double parametr);
 double printParametr(double parametr);
+void cupsCounter();
+void printMenu();
+void enterMoney();
+int checkCups();
+int checkMoney();
+
 
 int main()
 {
     while(true)
     {
-        //HEAD MENU//////////////////////////
-        int depositMoney = 0;
-        int choice = 0;
-    
-        // 1 выбор
-        printResult(" 1. Deposit moneyy: ", printParametr (depositMoney));
-        printResult(" 2. Espresso (BYN) ",printParametr(EXPRESSO));
-        printResult(" 3. Cappuccino (BYN) ", printParametr(CAPPUCCINO));
-        printResult(" 4. Latte (BYN) ", printParametr(LATTE));
-        printText(" 5. Service \n \n ");
-        printText("Please make a selection: ");
-        cin >> choice;
-    
-        //CUPS//////////////////////////
-        if (( choice == 1 or choice == 2 or choice == 3 or choice == 4) and CUPS == 0)
-        {
-            printText(" We are very sorry but there are no cups left \n\n");
-            break;
-        }
-        //оплата 1 раз
-        printText("Please deposit money. Pay attention that the coffee machine doesn’t give change\n");
-        printText("1. 10 coins\n");
-        printText("2. 20 coins\n");
-        printText("3. 50 coins\n");
-        printText("4. 1 BYN\n");
-        printText("5. 2 BYN\n");
-        printText("Please, put in the money: ");
-        cin >> depositMoney;
-        // выбор 2 раз
+        depositMoney = 0;
+        if (checkCups() == false)
+        {break;}
+        cupsCounter();
         printResult(" 1. Deposit money: ", printParametr (depositMoney));
-        printResult(" 2. Espresso (BYN) ",printParametr(EXPRESSO));
-        printResult(" 3. Cappuccino (BYN) ", printParametr(CAPPUCCINO));
-        printResult(" 4. Latte (BYN) ", printParametr(LATTE));
-        printText(" 5. Service \n \n ");
-        printText("Please make a selection: ");
-        cin >> choice; // важный
-        if (CUPS > 0 and ((choice == 2 and depositMoney < EXPRESSO) or (choice == 3 and depositMoney < CAPPUCCINO) or (choice == 4 and depositMoney < LATTE)))
-        {
-            break;
-        }
-        if (choice == 2)
-        {
-            printResult("Deposit money is: ",printParametr(depositMoney));
-            printText("Here is the best Espresso in the City. Please, help yourself!\n\n\n\n ");
-        }
-        else if (choice == 3)
-        {
-            printResult("Deposit money is: ",printParametr(depositMoney));
-            printText("Here is the best Cappuccino in the City. Please, help yourself!\n\n\n\n ");
-        }
-        else
-        {
-             printResult("Deposit money is: ",printParametr(depositMoney));
-            printText("Here is the best Latte in the City. Please, help yourself!\n\n\n\n ");
-        }
+        printMenu();
+        printText("\n");
+        enterMoney();
+        cin >> depositMoney;
+        printText("\n");
+        printResult(" 1. Deposit money: ", printParametr (depositMoney));
+        printMenu();
+        checkMoney();
     }
     return 0;
 }
@@ -114,3 +82,59 @@ double printParametr(double parametr)
 {
     return parametr;
 }
+void cupsCounter()
+{
+    cups--;
+}
+void printMenu()
+{
+   // printResult(" 1. Deposit money: ", printParametr (depositMoney));
+    printResult(" 2. Espresso (BYN) ",printParametr(EXPRESSO));
+    printResult(" 3. Cappuccino (BYN) ", printParametr(CAPPUCCINO));
+    printResult(" 4. Latte (BYN) ", printParametr(LATTE));
+    printText(" 5. Service \n ");
+    printText("Please make a selection: ");
+    cin >> choice;
+}
+void enterMoney()
+{
+    printText(" Please deposit money. Pay attention that the coffee machine doesn’t give change\n");
+    printText(" 1. 10 coins\n");
+    printText(" 2. 20 coins\n");
+    printText(" 3. 50 coins\n");
+    printText(" 4. 1 BYN\n");
+    printText(" 5. 2 BYN\n");
+    printText(" Please, put in the money: ");
+//    cin >> depositMoney;
+}
+int checkCups()
+{
+    if(cups > 0)
+    {
+        return true;
+    }
+    printText("We are very sorry but there are no cups left \n");
+    return false;
+}
+int checkMoney()
+{
+    if ((choice == 2 and depositMoney >= EXPRESSO) or (choice == 3 and depositMoney >= CAPPUCCINO) or (choice == 4 and depositMoney >= LATTE))
+    {
+        printText("--//--//--//--MAKING COFFEE FOR YOU--//--//--//--\n ");
+        printText("Here is the best coffee in the City. Please, help yourself!\n ");
+        printText("-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-\n\n\n\n ");
+    }
+    return true;
+}
+
+
+
+
+
+
+
+
+
+
+
+
